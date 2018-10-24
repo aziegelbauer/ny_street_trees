@@ -6,9 +6,7 @@ import datetime as dt
 df = pd.read_csv('2015-street-tree-census-tree-data.csv')
 ```
 
-```python
 Data from https://www.kaggle.com/new-york-city/ny-2015-street-tree-census-tree-data
-```
 
 ```python
 #changes characters
