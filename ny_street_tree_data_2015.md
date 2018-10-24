@@ -117,4 +117,5 @@ no_damage.spc_common.value_counts().nlargest(7)
     Japanese zelkova    21896
     Name: spc_common, dtype: int64
 
-
+## References
+- https://stackoverflow.com/questions/26763344/convert-pandas-column-to-datetime
