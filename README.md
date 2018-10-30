@@ -8,5 +8,7 @@ To clone repository: $ git clone https://github.com/zhirundo/ny_street_trees.git
 - Jupyter notebooks
 - python
 - pandas library
+- R
+- Rstudio
 
 data can be downloaded: https://www.kaggle.com/new-york-city/ny-2015-street-tree-census-tree-data
