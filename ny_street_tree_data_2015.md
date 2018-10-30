@@ -6,6 +6,9 @@ import datetime as dt
 df = pd.read_csv('2015-street-tree-census-tree-data.csv')
 ```
 
+Data from https://www.kaggle.com/new-york-city/ny-2015-street-tree-census-tree-data
+
+## Clean
 
 ```python
 #changes characters
@@ -14,37 +17,33 @@ df.created_at = df.created_at.str.replace('T', ':')
 df['created_at'] = pd.to_datetime(df['created_at'])
 ```
 
+## Analysis
+#### Health and Species Analysis
 
 ```python
 df.spc_common.value_counts().nlargest()
 ```
 
+```python
+good = df.query('health == "Good"')
+good.spc_common.value_counts().nlargest(7)
+```
 
+```python
+fair = df.query('health == "Fair"')
+fair.spc_common.value_counts().nlargest(7)
+```
 
+```python
+poor = df.query('health == "Poor"')
+poor.spc_common.value_counts().nlargest(7)
+```
 
-    London planetree    87014
-    honeylocust         64264
-    Callery pear        58931
-    pin oak             53185
-    Norway maple        34189
-    Name: spc_common, dtype: int64
-
-
-
+#### Tree Status and Species Analysis
 
 ```python
 df.status.value_counts()
 ```
-
-
-
-
-    Alive    652173
-    Stump     17654
-    Dead      13961
-    Name: status, dtype: int64
-
-
 
 
 ```python
@@ -52,68 +51,31 @@ alive = df.query('status == "Alive"')
 alive.spc_common.value_counts().nlargest()
 ```
 
+```python
+dead = df.query('status == "Dead"')
+dead.spc_common.value_counts().nlargest()
+```
 
+```python
+stump = df.query('status == "Stump"')
+stump.spc_common.value_counts().nlargest()
+```
 
-
-    London planetree    87014
-    honeylocust         64263
-    Callery pear        58931
-    pin oak             53185
-    Norway maple        34189
-    Name: spc_common, dtype: int64
-
-
-
+#### Sidewalk Status and Species Analysis
 
 ```python
 df.sidewalk.value_counts()
 ```
-
-
-
-
-    NoDamage    464978
-    Damage      187194
-    Name: sidewalk, dtype: int64
-
-
-
 
 ```python
 damage = df.query('sidewalk == "Damage"')
 damage.spc_common.value_counts().nlargest(7)
 ```
 
-
-
-
-    London planetree     34433
-    honeylocust          22856
-    pin oak              18937
-    Callery pear         12852
-    Norway maple         11159
-    littleleaf linden     9272
-    Japanese zelkova      7362
-    Name: spc_common, dtype: int64
-
-
-
-
 ```python
 no_damage = df.query('sidewalk == "NoDamage"')
 no_damage.spc_common.value_counts().nlargest(7)
 ```
 
-
-
-
-    London planetree    52581
-    Callery pear        46079
-    honeylocust         41406
-    pin oak             34248
-    cherry              25048
-    Norway maple        23030
-    Japanese zelkova    21896
-    Name: spc_common, dtype: int64
-
-
+## References
+- https://stackoverflow.com/questions/26763344/convert-pandas-column-to-datetime
