@@ -1,0 +1,115 @@
+---
+title: "NY_street_trees"
+output: html_document
+---
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, packages}
+#imports libraries
+library("ggplot2")
+library("knitr")
+library("rmarkdown")
+library("plyr")
+```
+
+```{r echo=FALSE, Load_the_Data, warning=FALSE}
+#loads dataframes
+df <- read.csv('2015-street-tree-census-tree-data.csv')
+```
+
+## NY Street Trees
+This dataset can be found on kaggle: https://www.kaggle.com/new-york-city/ny-2015-street-tree-census-tree-data
+
+## Univariate Plots
+
+```{r echo=FALSE, warning=FALSE, Univariate_Plots_1}
+#loads dataframes
+ggplot(aes(x = borough), data = df) +
+  geom_bar() +
+  ylab("Count") +
+  xlab("Borough")
+```
+
+```{r echo=FALSE, warning=FALSE, Univariate_Plots_2}
+#loads dataframes
+ggplot(aes(x = sidewalk), data = df) +
+  geom_bar() +
+  ylab("Count") +
+  xlab("Sidewalk Staus")
+```
+
+```{r echo=FALSE, warning=FALSE, Univariate_Plots_3}
+#loads dataframes
+ggplot(aes(x = health), data = df) +
+  geom_bar() +
+  ylab("Count") +
+  xlab("")
+```
+
+```{r echo=FALSE, warning=FALSE, Univariate_Plots_4}
+#loads dataframes
+ggplot(aes(x = status), data = df) +
+  geom_bar() +
+  ylab("Count") +
+  xlab("")
+```
+
+```{r echo=FALSE, warning=FALSE, Univariate_Plots_5}
+#loads dataframes
+ggplot(aes(x = health), data = df) +
+  geom_bar() +
+  ylab("Count") +
+  xlab("")
+```
+
+```{r echo=FALSE, warning=FALSE, Univariate_Plots_6}
+#loads dataframes
+ggplot(aes(x = tree_dbh),
+       data = df) +
+  geom_bar() +
+  xlim(0,55) +
+  ylab("Count") +
+  xlab("DBH")
+```
+
+## Bivariate Plots
+
+```{r echo=FALSE, warning=FALSE, Bivariate_Plots_1}
+#loads dataframes
+ggplot(aes(x = health, y = tree_dbh),
+       data = df) +
+  geom_boxplot(alpha = 1/10) +
+  ylim(0,55) +
+  ylab("Tree DBH") +
+  xlab("Health Status")
+```
+
+```{r echo=FALSE, warning=FALSE, Bivariate_Plots_2}
+#loads dataframes
+ggplot(aes(x = status, y = tree_dbh),
+       data = df) +
+  geom_boxplot(alpha = 1/10) +
+  ylim(0,55) +
+  ylab("Tree DBH") +
+  xlab("Status")
+```
+
+```{r echo=FALSE, warning=FALSE, Bivariate_Plots_3}
+#loads dataframes
+ggplot(aes(x = sidewalk, y = tree_dbh),
+       data = df) +
+  geom_boxplot(alpha = 1/10) +
+  ylim(0,55) +
+  ylab("Tree DBH") +
+  xlab("Sidewalk Status")
+```
+
+```{r echo=FALSE, warning=FALSE, Bivariate_Plots_4}
+#loads dataframes
+ggplot(aes(x = curb_loc, y = tree_dbh),
+       data = df) +
+  geom_boxplot(alpha = 1/10) +
+  ylim(0,55) +
+  ylab("Tree DBH") +
+  xlab("Curb Location")
+```
+
