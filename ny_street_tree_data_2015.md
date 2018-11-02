@@ -8,7 +8,8 @@ df = pd.read_csv('2015-street-tree-census-tree-data.csv')
 
 ## Clean
 
-```# creates new column of genus names - aggregates species
+```python
+# creates new column of genus names - aggregates species
 df['genus_name'] = df['spc_latin'].str.extract('([A-Za-z]\w{0,})')
 ```
 
@@ -831,7 +832,11 @@ df.spc_common.value_counts()
     Virginia pine                10
     Name: spc_common, Length: 132, dtype: int64
 
-
+## Saves to CSV
+```python
+#saves to csv
+df.to_csv('ny_street_trees_latin_names')
+```
 
 ## References
 - https://stackoverflow.com/questions/26763344/convert-pandas-column-to-datetime
