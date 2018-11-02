@@ -6,6 +6,12 @@ import datetime as dt
 df = pd.read_csv('2015-street-tree-census-tree-data.csv')
 ```
 
+## Clean
+
+```# creates new column of genus names - aggregates species
+df['genus_name'] = df['spc_latin'].str.extract('([A-Za-z]\w{0,})')
+```
+
 ## Analysis
 
 ### Health and Species Analysis
@@ -829,3 +835,4 @@ df.spc_common.value_counts()
 
 ## References
 - https://stackoverflow.com/questions/26763344/convert-pandas-column-to-datetime
+- https://chrisalbon.com/python/data_wrangling/pandas_regex_to_create_columns/
